@@ -1,71 +1,41 @@
+import { Link } from '@tanstack/react-router'
+
 export default function SideMenu() {
   return (
     <div className="z-5">
-      <button type="button" className="btn btn-text max-sm:btn-square sm:hidden" aria-haspopup="dialog" aria-expanded="false" aria-controls="collapsible-mini-sidebar" data-overlay="#collapsible-mini-sidebar" >
-        <span className="icon-[tabler--menu-2] size-5"></span>
-      </button>
-
-      <aside id="collapsible-mini-sidebar" className="overlay [--auto-close:sm] overlay-minified:w-17 sm:shadow-none overlay-open:translate-x-0 drawer drawer-start hidden w-66 sm:absolute sm:z-0 sm:flex sm:translate-x-0 border-e border-base-content/20" role="dialog" >
-        <div className="drawer-header overlay-minified:px-3.75 py-2 w-full flex items-center justify-between gap-3">
-          <div className="hidden sm:block">
-            <button type="button" className="btn btn-circle btn-text" aria-haspopup="dialog" aria-expanded="false" aria-controls="collapsible-mini-sidebar" aria-label="Minify navigation" data-overlay-minifier="#collapsible-mini-sidebar">
-              <span className="icon-[tabler--menu-2] size-5"></span>
-              <span className="sr-only">Navigation Toggle</span>
+      <aside id="collapsible-sidebar" className="overlay [--body-scroll:true] border-base-content/20 overlay-open:translate-x-0 drawer drawer-start sm:overlay-layout-open:translate-x-0 hidden w-64 border-e [--auto-close:sm] [--is-layout-affect:true] [--opened:lg] sm:absolute sm:z-0 sm:flex sm:shadow-none lg:[--overlay-backdrop:false]" role="dialog">
+        <div className="drawer-body p-0">
+          <div className="border-b border-base-content/20">
+            <button type="button" className="btn btn-text btn-square" aria-haspopup="dialog" aria-expanded="false" aria-controls="collapsible-sidebar" data-overlay="#collapsible-sidebar" >
+              <span className="icon-[tabler--x] size-6"></span>
             </button>
           </div>
-        </div>
-        <div className="drawer-body px-2 pt-4">
-          <ul className="menu p-0">
-            <li>
-              <a href="#">
-                <span className="icon-[tabler--home] size-5"></span>
-                <span className="overlay-minified:hidden">Home</span>
-              </a>
-            </li>
-            <li className="dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:15] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]" >
-              <button id="dropdown-default" type="button" className="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                <span className="icon-[tabler--apps] size-5"></span>
-                <span className="overlay-minified:hidden">Feeds</span>
-                <span className="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden" ></span>
+          <div className="accordion divide-neutral/20 divide-y">
+            <h3 className="font-bold text-lg p-4">Feeds</h3>
+            <div className="accordion-item active p-0" id="payment-arrow">
+              <button className="accordion-toggle inline-flex items-center gap-x-4 text-start" aria-controls="payment-arrow-collapse" aria-expanded="true">
+                <span className="icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-5 shrink-0 transition-transform duration-300 rtl:rotate-180" ></span>
+                <span className="font-medium">Technology</span>
               </button>
-              <ul className="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-default">
-                <li>
-                  <a href="#">
-                    <span className="icon-[tabler--mail] size-5"></span>
-                    Email
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span className="icon-[tabler--calendar] size-5"></span>
-                    Calendar
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:15] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]" >
-              <button id="dropdown-default" type="button" className="dropdown-toggle" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                <span className="icon-[tabler--apps] size-5"></span>
-                <span className="overlay-minified:hidden">Boards</span>
-                <span className="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden" ></span>
+              <div id="payment-arrow-collapse" className="accordion-content w-full overflow-hidden transition-[height] duration-300" aria-labelledby="payment-arrow" role="region">
+              </div>
+            </div>
+            <h3 className="font-bold text-lg p-4">Boards</h3>
+            <div className="accordion-item" id="delivery-arrow">
+              <button className="accordion-toggle inline-flex items-center gap-x-4 text-start" aria-controls="delivery-arrow-collapse" aria-expanded="false">
+                <span className="icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-5 shrink-0 transition-transform duration-300 rtl:rotate-180" ></span>
               </button>
-              <ul className="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-default">
-                <li>
-                  <a href="#">
-                    <span className="icon-[tabler--mail] size-5"></span>
-                    Email
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span className="icon-[tabler--calendar] size-5"></span>
-                    Calendar
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+              <div id="delivery-arrow-collapse" className="accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="delivery-arrow" role="region">
+                <div className="px-5 pb-4">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <footer className="p-4 border-t border-base-content/20">
+          <Link to='/' className=''>Help</Link>
+        </footer>
       </aside>
     </div>);
 }

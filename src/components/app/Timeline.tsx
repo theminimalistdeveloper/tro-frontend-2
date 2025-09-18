@@ -111,8 +111,7 @@ const items = [
 export default function Timeline() {
   return (
     <div className=''>
-
-      <div className='flex z-2 flex-wrap w-full p-4 gap-4'>
+      <div className='flex z-2 flex-wrap w-full p-4 pt-20 gap-4'>
         {items.map((item) => (
           <Card
             key={item.key}

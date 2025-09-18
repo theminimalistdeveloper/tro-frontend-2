@@ -10,7 +10,7 @@ export const Route = createFileRoute('/app/')({
 function RouteComponent() {
   return (
     <div>
-      <main className='h-screen bg-base-300 pl-17 overflow-y-auto'>
+      <main className='h-screen bg-base-300 overflow-y-auto'>
         <Header />
         <Timeline />
       </main>
