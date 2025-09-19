@@ -6,28 +6,33 @@ const items = [
     description: "A breathtaking view of snow-capped mountains during golden hour, with misty valleys below and dramatic clouds painting the sky in warm hues.",
     imageUrl: "https://picsum.photos/id/1/400/250",
     source: "NatureMysteries.com",
-    key: "flying-mountains-discovery"
+    key: "flying-mountains-discovery",
+    bookmark: true,
+    read: true,
   },
   {
     title: "Breaking: Ocean Sunsets Now Officially Banned in 12 Countries for Being Too Beautiful",
     description: "Waves gently crashing on a pristine beach as the sun sets on the horizon, creating a spectacular display of orange and pink reflections on the water.",
     imageUrl: "https://picsum.photos/id/20/400/250",
     source: "BeautyTribune.net",
-    key: "banned-ocean-sunsets"
+    key: "banned-ocean-sunsets",
+    read: true,
   },
   {
     title: "City Skyscrapers Reportedly Grow 3 Inches Taller Every Night When Nobody's Looking",
     description: "Modern skyscrapers illuminated against the night sky, showcasing the vibrant energy and architectural beauty of an urban metropolis.",
     imageUrl: "https://picsum.photos/id/30/400/250",
     source: "UrbanLegends.org",
-    key: "growing-skyscrapers-night"
+    key: "growing-skyscrapers-night",
+    read: true,
   },
   {
     title: "Forest Paths Now Require GPS Because Trees Keep Rearranging Themselves",
     description: "A winding trail through an ancient forest, with dappled sunlight filtering through the canopy and moss-covered rocks lining the peaceful pathway.",
     imageUrl: "https://picsum.photos/id/40/400/250",
     source: "WildernessWhispers.co",
-    key: "rearranging-forest-trees"
+    key: "rearranging-forest-trees",
+    pinned: true,
   },
   {
     title: "Desert Dunes Caught Moving to Different Time Zones Without Permission",
@@ -111,13 +116,17 @@ const items = [
 export default function Timeline() {
   return (
     <div className=''>
-      <div className='flex z-2 flex-wrap w-full p-4 pt-20 gap-4'>
+      <h3 className='pt-20 pl-4 pb-4 text-4xl font-bold'>Technology</h3>
+      <div className='flex flex-wrap z-2 w-full p-2 pl-4 gap-3'>
         {items.map((item) => (
           <Card
             key={item.key}
             title={item.title}
             description={item.description}
             source={item.source}
+            pinned={item.pinned}
+            read={item.read}
+            bookmark={item.bookmark}
             imageUrl={item.imageUrl} />
         ))}
       </div>

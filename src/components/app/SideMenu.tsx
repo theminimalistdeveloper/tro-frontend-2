@@ -3,13 +3,10 @@ import { Link } from '@tanstack/react-router'
 export default function SideMenu() {
   return (
     <div className="z-5">
-      <aside id="collapsible-sidebar" className="overlay [--body-scroll:true] border-base-content/20 overlay-open:translate-x-0 drawer drawer-start sm:overlay-layout-open:translate-x-0 hidden w-64 border-e [--auto-close:sm] [--is-layout-affect:true] [--opened:lg] sm:absolute sm:z-0 sm:flex sm:shadow-none lg:[--overlay-backdrop:false]" role="dialog">
+      <aside
+        id="collapsible-sidebar"
+        className="bg-base-200 pt-20 overlay [--body-scroll:true] border-base-content/20 overlay-open:translate-x-0 drawer drawer-start sm:overlay-layout-open:translate-x-0 hidden w-64 border-e [--auto-close:sm] [--is-layout-affect:true] [--opened:lg] sm:absolute sm:z-0 sm:flex sm:shadow-none lg:[--overlay-backdrop:false]" role="dialog">
         <div className="drawer-body p-0">
-          <div className="border-b border-base-content/20">
-            <button type="button" className="btn btn-text btn-square" aria-haspopup="dialog" aria-expanded="false" aria-controls="collapsible-sidebar" data-overlay="#collapsible-sidebar" >
-              <span className="icon-[tabler--x] size-6"></span>
-            </button>
-          </div>
           <div className="accordion divide-neutral/20 divide-y">
             <h3 className="font-bold text-lg p-4">Feeds</h3>
             <div className="accordion-item active p-0" id="payment-arrow">

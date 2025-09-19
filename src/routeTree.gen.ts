@@ -9,68 +9,103 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AppRouteRouteImport } from './routes/app/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppSettingsRouteImport } from './routes/app/settings'
 import { Route as AppAuthRouteImport } from './routes/app/auth'
+import { Route as AppArticleModalRouteImport } from './routes/app/article.modal'
 
+const AppRouteRoute = AppRouteRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppIndexRoute = AppIndexRouteImport.update({
-  id: '/app/',
-  path: '/app/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 const AppSettingsRoute = AppSettingsRouteImport.update({
-  id: '/app/settings',
-  path: '/app/settings',
-  getParentRoute: () => rootRouteImport,
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 const AppAuthRoute = AppAuthRouteImport.update({
-  id: '/app/auth',
-  path: '/app/auth',
-  getParentRoute: () => rootRouteImport,
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppArticleModalRoute = AppArticleModalRouteImport.update({
+  id: '/article/modal',
+  path: '/article/modal',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteRouteWithChildren
   '/app/auth': typeof AppAuthRoute
   '/app/settings': typeof AppSettingsRoute
-  '/app': typeof AppIndexRoute
+  '/app/': typeof AppIndexRoute
+  '/app/article/modal': typeof AppArticleModalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app/auth': typeof AppAuthRoute
   '/app/settings': typeof AppSettingsRoute
   '/app': typeof AppIndexRoute
+  '/app/article/modal': typeof AppArticleModalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteRouteWithChildren
   '/app/auth': typeof AppAuthRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
+  '/app/article/modal': typeof AppArticleModalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app/auth' | '/app/settings' | '/app'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/auth'
+    | '/app/settings'
+    | '/app/'
+    | '/app/article/modal'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app/auth' | '/app/settings' | '/app'
-  id: '__root__' | '/' | '/app/auth' | '/app/settings' | '/app/'
+  to: '/' | '/app/auth' | '/app/settings' | '/app' | '/app/article/modal'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/auth'
+    | '/app/settings'
+    | '/app/'
+    | '/app/article/modal'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppAuthRoute: typeof AppAuthRoute
-  AppSettingsRoute: typeof AppSettingsRoute
-  AppIndexRoute: typeof AppIndexRoute
+  AppRouteRoute: typeof AppRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -80,33 +115,56 @@ declare module '@tanstack/react-router' {
     }
     '/app/': {
       id: '/app/'
-      path: '/app'
-      fullPath: '/app'
+      path: '/'
+      fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AppRouteRoute
     }
     '/app/settings': {
       id: '/app/settings'
-      path: '/app/settings'
+      path: '/settings'
       fullPath: '/app/settings'
       preLoaderRoute: typeof AppSettingsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AppRouteRoute
     }
     '/app/auth': {
       id: '/app/auth'
-      path: '/app/auth'
+      path: '/auth'
       fullPath: '/app/auth'
       preLoaderRoute: typeof AppAuthRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/article/modal': {
+      id: '/app/article/modal'
+      path: '/article/modal'
+      fullPath: '/app/article/modal'
+      preLoaderRoute: typeof AppArticleModalRouteImport
+      parentRoute: typeof AppRouteRoute
     }
   }
 }
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+interface AppRouteRouteChildren {
+  AppAuthRoute: typeof AppAuthRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppIndexRoute: typeof AppIndexRoute
+  AppArticleModalRoute: typeof AppArticleModalRoute
+}
+
+const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppAuthRoute: AppAuthRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppIndexRoute: AppIndexRoute,
+  AppArticleModalRoute: AppArticleModalRoute,
+}
+
+const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
+  AppRouteRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  AppRouteRoute: AppRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
