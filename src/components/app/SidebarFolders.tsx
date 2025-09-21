@@ -58,14 +58,22 @@ export default function SidebarFolders() {
       {content.map((section) => {
         return (
           <div className='accordion-item' id={section.id} key={section.title}>
-            <button
-              className='bg-base-content/20 accordion-toggle inline-flex items-center gap-x-4 text-start'
-              aria-controls='payment-arrow-collapse'
-              aria-expanded='false'
-            >
-              <span className='icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-5 shrink-0 transition-transform duration-300 rtl:rotate-180' ></span>
-              {section.title}
-            </button>
+            <div className='bg-base-content/20 flex justify-between'>
+              <button
+                className='accordion-toggle inline-flex items-center gap-x-4 text-start'
+                aria-controls='payment-arrow-collapse'
+                aria-expanded='false'
+              >
+                <span className='icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-5 shrink-0 transition-transform duration-300 rtl:rotate-180' ></span>
+                {section.title}
+              </button>
+              <button className='p-4 hover:text-white'>
+                <span className='icon-[tabler--plus] size-5'></span>
+                <span className='tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible' role='tooltip'>
+                  <span className='tooltip-body tooltip-primary'>Edit folder</span>
+                </span>
+              </button>
+            </div>
             <div
               id='payment-arrow-collapse'
               className='accordion-content w-full overflow-hidden transition-[height] duration-300'
@@ -77,7 +85,7 @@ export default function SidebarFolders() {
                   <li className='bg-base-content/10 flex p-2 border-b border-base-content/20'>
                     <Link className='flex flex-grow' to={feed.url}>
                       <img className='size-8 mr-3 mt-1 rounded-md' src={feed.icon} />
-                      <span className='pt-2'>{section.title}</span>
+                      <span className='pt-2'>{feed.name}</span>
                     </Link>
                     <span className='badge badge-sm badge-primary mt-3'>{feed.count}</span>
                   </li>

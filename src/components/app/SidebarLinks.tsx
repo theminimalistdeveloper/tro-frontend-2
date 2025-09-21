@@ -18,12 +18,12 @@ export default function SidebarLinks() {
         </li>
         <li>
           <Link to='/app' className='hover:text-white flex h-full py-3'>
-            <span className='icon-[tabler--plus] size-6 mr-2 align-middle'></span>
-            Add Source
+            <span className='icon-[tabler--folder-plus] size-6 mr-2 align-middle'></span>
+            Add Folder
           </Link>
         </li>
         <li>
-          <Link to='/app' className='hover:text-white flex h-full py-3'>
+          <Link to='/app/search' className='hover:text-white flex h-full py-3'>
             <span className='icon-[tabler--search] size-6 mr-2 align-middle'></span>
             Search
           </Link>

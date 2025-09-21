@@ -9,21 +9,10 @@ export default function Header() {
         </button>
       </div>
       <div className='w-full max-w-4xl flex items-center md:gap-2'>
-        <div className='hidden md:block md:w-1/6'>
-          <Link to='/app' className='text-xl font-bold'>
-            The Reader One
-          </Link>
-        </div>
+        <div className='hidden md:block md:w-1/6'></div>
 
-        <div className='m-auto hidden md:flex md:w-4/6' >
-          <input
-            type='text'
-            placeholder='Search'
-            className='input p-4 h-10 border-base-content/60 rounded-xl border-r-0 rounded-tr-none rounded-br-none w-full'
-          />
-          <button className='p-2 pr-4 h-10 border border-base-content/60 rounded-xl rounded-tl-none rounded-bl-none border-l-0 '>
-            <span className='icon-[tabler--search] size-5'></span>
-          </button>
+        <div className='m-auto hidden justify-center md:flex md:w-4/6'>
+          <h2 className='text-lg font-bold uppercase'>Technology</h2>
         </div>
 
         <div className='md:w-1/6 flex gap-4 pl-5'>
@@ -53,7 +42,11 @@ export default function Header() {
             </span>
           </div>
           <div className='tooltip'>
-            <button type='button' className='tooltip-toggle '>
+            <button
+              type='button'
+              className='tooltip-toggle'
+              data-overlay='#folder-form-modal'
+            >
               <span className='icon-[tabler--pencil] size-6'></span>
             </button>
             <span className='tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible' role='tooltip'>

@@ -9,7 +9,7 @@ export const Route = createFileRoute('/app')({
 function RouteComponent() {
   return (
     <div>
-      <main className='h-screen bg-base-300 overflow-y-auto'>
+      <main className='h-screen pt-20 bg-base-300 overflow-y-auto'>
         <Header />
         <Outlet />
       </main>

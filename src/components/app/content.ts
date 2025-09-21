@@ -1,6 +1,5 @@
-import Card from './Card'
 
-const items = [
+export default [
   {
     title: "Scientists Discover Mountains Can Actually Fly During Full Moons",
     description: "A breathtaking view of snow-capped mountains during golden hour, with misty valleys below and dramatic clouds painting the sky in warm hues.",
@@ -112,24 +111,3 @@ const items = [
     key: "identity-theft-mountains"
   }
 ]
-
-export default function Timeline() {
-  return (
-    <div className=''>
-      <h3 className='pt-20 pl-4 pb-4 text-4xl font-bold'>Technology</h3>
-      <div className='flex flex-wrap z-2 w-full p-2 pl-4 gap-3'>
-        {items.map((item) => (
-          <Card
-            key={item.key}
-            title={item.title}
-            description={item.description}
-            source={item.source}
-            pinned={item.pinned}
-            read={item.read}
-            bookmark={item.bookmark}
-            imageUrl={item.imageUrl} />
-        ))}
-      </div>
-    </div>
-  )
-}

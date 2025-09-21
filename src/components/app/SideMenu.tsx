@@ -7,7 +7,9 @@ export default function SideMenu() {
     <div className="z-2">
       <aside
         id="collapsible-sidebar"
-        className="bg-base-200 md:pt-15 overlay [--body-scroll:true] border-base-content/20 overlay-open:translate-x-0 drawer drawer-start sm:overlay-layout-open:translate-x-0 hidden w-64 border-e [--auto-close:sm] [--is-layout-affect:true] [--opened:lg] sm:absolute sm:z-0 sm:flex sm:shadow-none lg:[--overlay-backdrop:false]" role="dialog">
+        className="bg-base-200 md:pt-15 overlay [--body-scroll:true] border-base-content/20 overlay-open:translate-x-0 drawer drawer-start sm:overlay-layout-open:translate-x-0 hidden w-64 border-e [--auto-close:sm] [--is-layout-affect:true] [--opened:lg] sm:absolute sm:z-0 sm:flex sm:shadow-none lg:[--overlay-backdrop:false]"
+        role="dialog"
+      >
         <div className="drawer-body p-0">
           <div className='md:hidden p-4 border-b border-base-content/20'>
             <button

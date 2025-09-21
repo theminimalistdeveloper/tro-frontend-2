@@ -13,8 +13,9 @@ import { Route as AppRouteRouteImport } from './routes/app/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppSettingsRouteImport } from './routes/app/settings'
+import { Route as AppSearchRouteImport } from './routes/app/search'
 import { Route as AppAuthRouteImport } from './routes/app/auth'
-import { Route as AppArticleModalRouteImport } from './routes/app/article.modal'
+import { Route as AppArticleRouteImport } from './routes/app/article'
 
 const AppRouteRoute = AppRouteRouteImport.update({
   id: '/app',
@@ -36,60 +37,76 @@ const AppSettingsRoute = AppSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppSearchRoute = AppSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppAuthRoute = AppAuthRouteImport.update({
   id: '/auth',
   path: '/auth',
   getParentRoute: () => AppRouteRoute,
 } as any)
-const AppArticleModalRoute = AppArticleModalRouteImport.update({
-  id: '/article/modal',
-  path: '/article/modal',
+const AppArticleRoute = AppArticleRouteImport.update({
+  id: '/article',
+  path: '/article',
   getParentRoute: () => AppRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
+  '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
-  '/app/article/modal': typeof AppArticleModalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
   '/app': typeof AppIndexRoute
-  '/app/article/modal': typeof AppArticleModalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
+  '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
-  '/app/article/modal': typeof AppArticleModalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/app'
+    | '/app/article'
     | '/app/auth'
+    | '/app/search'
     | '/app/settings'
     | '/app/'
-    | '/app/article/modal'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app/auth' | '/app/settings' | '/app' | '/app/article/modal'
+  to:
+    | '/'
+    | '/app/article'
+    | '/app/auth'
+    | '/app/search'
+    | '/app/settings'
+    | '/app'
   id:
     | '__root__'
     | '/'
     | '/app'
+    | '/app/article'
     | '/app/auth'
+    | '/app/search'
     | '/app/settings'
     | '/app/'
-    | '/app/article/modal'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -127,6 +144,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppSettingsRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/search': {
+      id: '/app/search'
+      path: '/search'
+      fullPath: '/app/search'
+      preLoaderRoute: typeof AppSearchRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/auth': {
       id: '/app/auth'
       path: '/auth'
@@ -134,28 +158,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAuthRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/app/article/modal': {
-      id: '/app/article/modal'
-      path: '/article/modal'
-      fullPath: '/app/article/modal'
-      preLoaderRoute: typeof AppArticleModalRouteImport
+    '/app/article': {
+      id: '/app/article'
+      path: '/article'
+      fullPath: '/app/article'
+      preLoaderRoute: typeof AppArticleRouteImport
       parentRoute: typeof AppRouteRoute
     }
   }
 }
 
 interface AppRouteRouteChildren {
+  AppArticleRoute: typeof AppArticleRoute
   AppAuthRoute: typeof AppAuthRoute
+  AppSearchRoute: typeof AppSearchRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppIndexRoute: typeof AppIndexRoute
-  AppArticleModalRoute: typeof AppArticleModalRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppArticleRoute: AppArticleRoute,
   AppAuthRoute: AppAuthRoute,
+  AppSearchRoute: AppSearchRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppIndexRoute: AppIndexRoute,
-  AppArticleModalRoute: AppArticleModalRoute,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
