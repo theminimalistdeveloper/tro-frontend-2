@@ -67,12 +67,15 @@ export default function SidebarFolders() {
                 <span className='icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-5 shrink-0 transition-transform duration-300 rtl:rotate-180' ></span>
                 {section.title}
               </button>
-              <button className='p-4 hover:text-white'>
+              <Link
+                to='/app/search' params={{ addSourceToFolder: section.id }}
+                className='p-4 hover:text-white'
+              >
                 <span className='icon-[tabler--plus] size-5'></span>
                 <span className='tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible' role='tooltip'>
-                  <span className='tooltip-body tooltip-primary'>Edit folder</span>
+                  <span className='tooltip-body tooltip-primary'>Add source to {section.title}</span>
                 </span>
-              </button>
+              </Link>
             </div>
             <div
               id='payment-arrow-collapse'

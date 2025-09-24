@@ -14,6 +14,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AppSettingsRouteImport } from './routes/app/settings'
 import { Route as AppSearchRouteImport } from './routes/app/search'
+import { Route as AppProfileRouteImport } from './routes/app/profile'
+import { Route as AppHelpRouteImport } from './routes/app/help'
 import { Route as AppAuthRouteImport } from './routes/app/auth'
 import { Route as AppArticleRouteImport } from './routes/app/article'
 
@@ -42,6 +44,16 @@ const AppSearchRoute = AppSearchRouteImport.update({
   path: '/search',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppHelpRoute = AppHelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppAuthRoute = AppAuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -58,6 +70,8 @@ export interface FileRoutesByFullPath {
   '/app': typeof AppRouteRouteWithChildren
   '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/help': typeof AppHelpRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
@@ -66,6 +80,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/help': typeof AppHelpRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
   '/app': typeof AppIndexRoute
@@ -76,6 +92,8 @@ export interface FileRoutesById {
   '/app': typeof AppRouteRouteWithChildren
   '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/help': typeof AppHelpRoute
+  '/app/profile': typeof AppProfileRoute
   '/app/search': typeof AppSearchRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/': typeof AppIndexRoute
@@ -87,6 +105,8 @@ export interface FileRouteTypes {
     | '/app'
     | '/app/article'
     | '/app/auth'
+    | '/app/help'
+    | '/app/profile'
     | '/app/search'
     | '/app/settings'
     | '/app/'
@@ -95,6 +115,8 @@ export interface FileRouteTypes {
     | '/'
     | '/app/article'
     | '/app/auth'
+    | '/app/help'
+    | '/app/profile'
     | '/app/search'
     | '/app/settings'
     | '/app'
@@ -104,6 +126,8 @@ export interface FileRouteTypes {
     | '/app'
     | '/app/article'
     | '/app/auth'
+    | '/app/help'
+    | '/app/profile'
     | '/app/search'
     | '/app/settings'
     | '/app/'
@@ -151,6 +175,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppSearchRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/help': {
+      id: '/app/help'
+      path: '/help'
+      fullPath: '/app/help'
+      preLoaderRoute: typeof AppHelpRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/auth': {
       id: '/app/auth'
       path: '/auth'
@@ -171,6 +209,8 @@ declare module '@tanstack/react-router' {
 interface AppRouteRouteChildren {
   AppArticleRoute: typeof AppArticleRoute
   AppAuthRoute: typeof AppAuthRoute
+  AppHelpRoute: typeof AppHelpRoute
+  AppProfileRoute: typeof AppProfileRoute
   AppSearchRoute: typeof AppSearchRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -179,6 +219,8 @@ interface AppRouteRouteChildren {
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppArticleRoute: AppArticleRoute,
   AppAuthRoute: AppAuthRoute,
+  AppHelpRoute: AppHelpRoute,
+  AppProfileRoute: AppProfileRoute,
   AppSearchRoute: AppSearchRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppIndexRoute: AppIndexRoute,

@@ -87,25 +87,25 @@ export default function Header() {
               aria-labelledby='dropdown-default'
             >
               <li>
-                <Link className='dropdown-item' to='/'>
+                <Link className='dropdown-item' to='/app/profile'>
                   <span className='icon-[tabler--user] size-5' />
                   Profile
                 </Link>
               </li>
               <li>
-                <Link className='dropdown-item' to='/'>
+                <Link className='dropdown-item' to='/app/settings'>
                   <span className='icon-[tabler--settings] size-5' />
                   Settings
                 </Link>
               </li>
               <li>
-                <Link className='dropdown-item' to='/'>
+                <Link className='dropdown-item' to='/app/help'>
                   <span className='icon-[tabler--help] size-5' />
                   Help
                 </Link>
               </li>
               <li>
-                <Link className='dropdown-item' to='/'>
+                <Link className='dropdown-item' to='/app/logout'>
                   <span className='icon-[tabler--logout] size-5' />
                   Logout
                 </Link>

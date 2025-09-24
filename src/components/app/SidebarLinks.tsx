@@ -23,7 +23,8 @@ export default function SidebarLinks() {
           </Link>
         </li>
         <li>
-          <Link to='/app/search' className='hover:text-white flex h-full py-3'>
+          <Link to='/app/search'
+            className='hover:text-white flex h-full py-3'>
             <span className='icon-[tabler--search] size-6 mr-2 align-middle'></span>
             Search
           </Link>
