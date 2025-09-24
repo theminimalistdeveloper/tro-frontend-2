@@ -8,7 +8,7 @@ export default function SmallView() {
       {items.map((item) => (
         <div
           key={item.key}
-          className="flex justify-between flex-wrap w-full py-2 border-b border-base-content/10"
+          className="flex justify-between flex-wrap w-full py-2 last:border-b-0 border-b border-base-content/10"
         >
           <h2 className='text-md w-4/5'>
             <Link

@@ -71,7 +71,7 @@ export default function SourcesList() {
   return (
     <div className="flex flex-wrap gap-2">
       {sources.map((source) => (
-        <article className='flex gap-2 border-b py-4 border-base-content/20'>
+        <article className='flex w-full gap-2 last:border-b-0 border-b py-4 border-base-content/20'>
           <div className='w-1/6 top-2 right-2'>
             <img
               src={source.icon}

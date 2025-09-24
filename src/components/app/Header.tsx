@@ -11,11 +11,11 @@ export default function Header() {
       <div className='w-full max-w-4xl flex items-center md:gap-2'>
         <div className='hidden md:block md:w-1/6'></div>
 
-        <div className='m-auto hidden justify-center md:flex md:w-4/6'>
+        <div className='m-auto hidden justify-center md:flex md:w-3/6'>
           <h2 className='text-lg font-bold uppercase'>Technology</h2>
         </div>
 
-        <div className='md:w-1/6 flex gap-4 pl-5'>
+        <div className='md:w-2/6 flex gap-4 pl-5'>
           <div className='tooltip'>
             <button type='button' className='tooltip-toggle'>
               <span className='icon-[tabler--check] size-6'></span>
@@ -23,6 +23,44 @@ export default function Header() {
             <span className='tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible' role='tooltip'>
               <span className='tooltip-body tooltip-primary'>Mark all as read</span>
             </span>
+          </div>
+
+          <div className='dropdown relative inline-flex cursor-pointer'>
+            <div id='dropdown-default' className='dropdown-toggle'>
+              <div className='tooltip'>
+                <button type='button' className='tooltip-toggle'>
+                  <span className='icon-[tabler--layout-board-filled] size-6'></span>
+                </button>
+                <span className='tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible' role='tooltip'>
+                  <span className='tooltip-body tooltip-primary'>View</span>
+                </span>
+              </div>
+            </div>
+            <ul
+              className='dropdown-menu dropdown-open:opacity-100 border border-base-content/40 hidden min-w-60'
+              role='menu'
+              aria-orientation='vertical'
+              aria-labelledby='dropdown-default'
+            >
+              <li>
+                <Link className='dropdown-item' to='/app/profile'>
+                  <span className='icon-[tabler--layout-grid-filled] size-5' />
+                  Cards View
+                </Link>
+              </li>
+              <li>
+                <Link className='dropdown-item' to='/app/help'>
+                  <span className='icon-[tabler--layout-list-filled] size-5' />
+                  List View
+                </Link>
+              </li>
+              <li>
+                <Link className='dropdown-item' to='/app'>
+                  <span className='icon-[tabler--list] size-5' />
+                  Condensed View
+                </Link>
+              </li>
+            </ul>
           </div>
           <div className='tooltip'>
             <button type='button' className='tooltip-toggle '>
@@ -105,7 +143,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link className='dropdown-item' to='/app/logout'>
+                <Link className='dropdown-item' to='/app'>
                   <span className='icon-[tabler--logout] size-5' />
                   Logout
                 </Link>

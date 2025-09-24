@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as BoardsRouteImport } from './routes/boards'
 import { Route as AppRouteRouteImport } from './routes/app/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
@@ -16,9 +17,16 @@ import { Route as AppSettingsRouteImport } from './routes/app/settings'
 import { Route as AppSearchRouteImport } from './routes/app/search'
 import { Route as AppProfileRouteImport } from './routes/app/profile'
 import { Route as AppHelpRouteImport } from './routes/app/help'
+import { Route as AppBookmarksRouteImport } from './routes/app/bookmarks'
+import { Route as AppBoardRouteImport } from './routes/app/board'
 import { Route as AppAuthRouteImport } from './routes/app/auth'
 import { Route as AppArticleRouteImport } from './routes/app/article'
 
+const BoardsRoute = BoardsRouteImport.update({
+  id: '/boards',
+  path: '/boards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppRouteRoute = AppRouteRouteImport.update({
   id: '/app',
   path: '/app',
@@ -54,6 +62,16 @@ const AppHelpRoute = AppHelpRouteImport.update({
   path: '/help',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppBookmarksRoute = AppBookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppBoardRoute = AppBoardRouteImport.update({
+  id: '/board',
+  path: '/board',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppAuthRoute = AppAuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -68,8 +86,11 @@ const AppArticleRoute = AppArticleRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
+  '/boards': typeof BoardsRoute
   '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/board': typeof AppBoardRoute
+  '/app/bookmarks': typeof AppBookmarksRoute
   '/app/help': typeof AppHelpRoute
   '/app/profile': typeof AppProfileRoute
   '/app/search': typeof AppSearchRoute
@@ -78,8 +99,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/boards': typeof BoardsRoute
   '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/board': typeof AppBoardRoute
+  '/app/bookmarks': typeof AppBookmarksRoute
   '/app/help': typeof AppHelpRoute
   '/app/profile': typeof AppProfileRoute
   '/app/search': typeof AppSearchRoute
@@ -90,8 +114,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteRouteWithChildren
+  '/boards': typeof BoardsRoute
   '/app/article': typeof AppArticleRoute
   '/app/auth': typeof AppAuthRoute
+  '/app/board': typeof AppBoardRoute
+  '/app/bookmarks': typeof AppBookmarksRoute
   '/app/help': typeof AppHelpRoute
   '/app/profile': typeof AppProfileRoute
   '/app/search': typeof AppSearchRoute
@@ -103,8 +130,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/app'
+    | '/boards'
     | '/app/article'
     | '/app/auth'
+    | '/app/board'
+    | '/app/bookmarks'
     | '/app/help'
     | '/app/profile'
     | '/app/search'
@@ -113,8 +143,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/boards'
     | '/app/article'
     | '/app/auth'
+    | '/app/board'
+    | '/app/bookmarks'
     | '/app/help'
     | '/app/profile'
     | '/app/search'
@@ -124,8 +157,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/app'
+    | '/boards'
     | '/app/article'
     | '/app/auth'
+    | '/app/board'
+    | '/app/bookmarks'
     | '/app/help'
     | '/app/profile'
     | '/app/search'
@@ -136,10 +172,18 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRouteRoute: typeof AppRouteRouteWithChildren
+  BoardsRoute: typeof BoardsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/boards': {
+      id: '/boards'
+      path: '/boards'
+      fullPath: '/boards'
+      preLoaderRoute: typeof BoardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app': {
       id: '/app'
       path: '/app'
@@ -189,6 +233,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHelpRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/app/bookmarks': {
+      id: '/app/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/app/bookmarks'
+      preLoaderRoute: typeof AppBookmarksRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/app/board': {
+      id: '/app/board'
+      path: '/board'
+      fullPath: '/app/board'
+      preLoaderRoute: typeof AppBoardRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/app/auth': {
       id: '/app/auth'
       path: '/auth'
@@ -209,6 +267,8 @@ declare module '@tanstack/react-router' {
 interface AppRouteRouteChildren {
   AppArticleRoute: typeof AppArticleRoute
   AppAuthRoute: typeof AppAuthRoute
+  AppBoardRoute: typeof AppBoardRoute
+  AppBookmarksRoute: typeof AppBookmarksRoute
   AppHelpRoute: typeof AppHelpRoute
   AppProfileRoute: typeof AppProfileRoute
   AppSearchRoute: typeof AppSearchRoute
@@ -219,6 +279,8 @@ interface AppRouteRouteChildren {
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppArticleRoute: AppArticleRoute,
   AppAuthRoute: AppAuthRoute,
+  AppBoardRoute: AppBoardRoute,
+  AppBookmarksRoute: AppBookmarksRoute,
   AppHelpRoute: AppHelpRoute,
   AppProfileRoute: AppProfileRoute,
   AppSearchRoute: AppSearchRoute,
@@ -233,6 +295,7 @@ const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRouteRoute: AppRouteRouteWithChildren,
+  BoardsRoute: BoardsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

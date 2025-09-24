@@ -29,7 +29,6 @@ export default function ListView() {
             <ArticleActions />
           </div>
         </div>
-
       ))}
     </div>
   )

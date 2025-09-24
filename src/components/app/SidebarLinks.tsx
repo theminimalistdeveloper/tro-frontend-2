@@ -11,7 +11,7 @@ export default function SidebarLinks() {
           </Link>
         </li>
         <li>
-          <Link to='/app' className='hover:text-white flex h-full py-3'>
+          <Link to='/app/bookmarks' className='hover:text-white flex h-full py-3'>
             <span className='icon-[tabler--bookmark-filled] size-6 mr-2 align-middle'></span>
             Bookmarks
           </Link>
