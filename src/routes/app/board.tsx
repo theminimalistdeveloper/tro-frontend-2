@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import ListView from '../../components/app/ListView'
+import ListView from '@/components/app/Articles/ListView'
 
 export const Route = createFileRoute('/app/board')({
   component: RouteComponent,

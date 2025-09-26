@@ -1,7 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import SourcesList from '../../components/app/SourcesList'
-import ListView from '../../components/app/ListView'
-import SmallView from '../../components/app/SmallView'
+import SourcesList from '@/components/app/SourcesList'
 
 export const Route = createFileRoute('/app/search')({
   component: RouteComponent,
@@ -37,10 +35,8 @@ function RouteComponent() {
           <SourcesList />
         </div>
         <div id='tabs-basic-filled-2' className='hidden' role='tabpanel' aria-labelledby='tabs-basic-filled-item-2'>
-          <ListView />
         </div>
         <div id='tabs-basic-filled-3' className='hidden' role='tabpanel' aria-labelledby='tabs-basic-filled-item-3'>
-          <SmallView />
         </div>
       </div>
     </section>

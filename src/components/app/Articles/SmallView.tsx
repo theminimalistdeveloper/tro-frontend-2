@@ -1,5 +1,5 @@
-import items from './content.ts'
-import ArticleActions from './ArticleActions2'
+import items from '@/components/app/Articles/content.ts'
+import ArticleActions from '@/components/app/Articles/Actions'
 import { Link } from '@tanstack/react-router'
 
 export default function SmallView() {

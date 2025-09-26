@@ -1,6 +1,6 @@
-import SidebarFolders from './SidebarFolders';
-import SidebarBoards from './SidebarBoards';
-import SidebarLinks from './SidebarLinks';
+import SidebarFolders from '@/components/app/Sidebar/Folders';
+import SidebarBoards from '@/components/app/Sidebar/Boards';
+import SidebarLinks from '@/components/app/Sidebar/Links';
 
 export default function SideMenu() {
   return (

@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import ArticleActions from './ArticleActions2'
+import ArticleActions from '@/components/app/Articles/Actions'
 
 export default function Card(
   { key, title, source, description, imageUrl, read, bookmark, pinned }:

@@ -1,4 +1,4 @@
-import ArticleActions from './ArticleActions2'
+import ArticleActions from '@/components/app/Articles/Actions'
 
 export default function Article() {
   const imageUrl = 'https://picsum.photos/id/1/400/250';

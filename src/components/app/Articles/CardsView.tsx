@@ -1,4 +1,4 @@
-import Card from './Card'
+import Card from '@/components/app/Articles/Card'
 import items from './content.ts'
 
 export default function CardsView() {

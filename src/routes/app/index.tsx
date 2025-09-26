@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import ListView from '../../components/app/ListView'
+import CardsView from '@/components/app/Articles/CardsView'
 
 export const Route = createFileRoute('/app/')({
   component: RouteComponent,
@@ -7,6 +7,6 @@ export const Route = createFileRoute('/app/')({
 
 function RouteComponent() {
   return <div>
-    <ListView />
+    <CardsView />
   </div>
 }

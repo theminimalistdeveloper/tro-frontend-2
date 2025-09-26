@@ -1,4 +1,4 @@
-import Article from './Article';
+import Article from '@/components/app/Articles/Article';
 
 export default function ArticleModal() {
   return (

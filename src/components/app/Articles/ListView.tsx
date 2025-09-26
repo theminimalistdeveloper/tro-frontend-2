@@ -1,6 +1,6 @@
 import items from './content.ts'
 import { Link } from '@tanstack/react-router'
-import ArticleActions from './ArticleActions2'
+import ArticleActions from '@/components/app/Articles/Actions'
 
 export default function ListView() {
   return (
