@@ -1,5 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import ListView from '@/components/app/Articles/ListView'
+import Header from '@/components/app/Header/Header'
+import Actions from '@/components/app/Articles/Actions'
+import SectionTitle from '@/components/app/SectionTitle'
 
 export const Route = createFileRoute('/app/board')({
   component: RouteComponent,
@@ -7,9 +10,8 @@ export const Route = createFileRoute('/app/board')({
 
 function RouteComponent() {
   return <div>
-    <div className='w-full max-w-3xl m-auto p-4 flex flex-wrap align-middle'>
-      <h2 className='text-2xl font-bold mb-4 w-full border-b border-base-content/20 pb-4'>Board</h2>
-      <ListView />
-    </div>
+    <Header actions=<Actions /> />
+    <SectionTitle title='Board' />
+    <ListView />
   </div>
 }

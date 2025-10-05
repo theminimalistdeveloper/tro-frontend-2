@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import SectionTitle from '@/components/app/SectionTitle'
 
 export const Route = createFileRoute('/app/help')({
   component: RouteComponent,
@@ -6,8 +7,6 @@ export const Route = createFileRoute('/app/help')({
 
 function RouteComponent() {
   return <div>
-    <div className='w-full max-w-3xl m-auto p-4 flex flex-wrap align-middle'>
-      <h2 className='text-2xl font-bold mb-4 w-full border-b border-base-content/20 pb-4'>Help & Support</h2>
-    </div>
+    <SectionTitle title='Help' />
   </div>
 }
