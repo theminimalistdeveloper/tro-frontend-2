@@ -1,8 +1,13 @@
 import { HeadContent, Scripts, createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanstackDevtools } from '@tanstack/react-devtools'
+import { UserProvider } from '@/providers/UserProvider'
+import { ClerkProvider } from '@clerk/clerk-react'
 
-import Header from '../components/Header'
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
+
 
 import appCss from '../styles.css?url'
 
@@ -43,7 +48,11 @@ function RootDocument() {
         <HeadContent />
       </head>
       <body>
-        <Outlet />
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+          <UserProvider>
+            <Outlet />
+          </UserProvider>
+        </ClerkProvider>
         <Scripts />
       </body>
     </html>

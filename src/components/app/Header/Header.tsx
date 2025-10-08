@@ -1,12 +1,14 @@
-import Profile from '@/components/app/Header/Profile'
-import { Link } from '@tanstack/react-router'
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+import AuthActions from '@/components/app/Header/AuthActions'
+import { useUser } from '@/providers/UserProvider'
 import React from 'react';
 
 export default function Header(
   { actions = null, title = '' }:
-    { title?: String, actions?: React.ReactNode | null }
+    { title?: String, actions?: React.ReactNode }
 ) {
-  const loggedIn = true
+  const { userState } = useUser()
+  const loggedIn = false
   return (
     <nav className='navbar shadow-lg fixed justify-between align-middle m-auto bg-base-100 md:h-15 start-0 top-0 z-10'>
       <div>
@@ -29,14 +31,7 @@ export default function Header(
       </div>
 
       <div className='flex gap-3 pr-4 pl-2 items-center'>
-        {loggedIn ?
-          <Profile />
-          :
-          <div className='flex gap-2'>
-            <Link to='/login' className='btn btn-ghost btn-sm'>Login</Link>
-            <Link to='/signup' className='btn btn-primary btn-sm'>Sign Up</Link>
-          </div>
-        }
+        {userState.isLoggedIn ? <UserButton /> : <AuthActions />}
       </div>
     </nav >
   )
